@@ -3,5 +3,5 @@
 .RData
 .Ruserdata
 blogdown
-.Thumbs.db instead
-website/public/
+.Thumbs.db
+public
