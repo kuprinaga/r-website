@@ -19,8 +19,9 @@ showFullContent: no
 
 To finally try my hands on map visualisations, I used this publicly available dataset from [NYC Open Data](https://data.cityofnewyork.us/Environment/Public-Recycling-Bins/sxx4-xhzg)
 
-Data is very nice and tidy so it actually took less than an hour to create a simlpe (interactive when not PNG) plot using *Leaflet*:
-![NYC garbage disposal](/img/nyc_map.png)
+Data is very nice and tidy so it actually took less than an hour to create a simlpe interactive plot using *Leaflet*:
+
+<iframe src="/img/map.html" width = 100% height = 600px></iframe> 
 
 This is using the following libraries:
 
