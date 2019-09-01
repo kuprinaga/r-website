@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>publicdata on Data viz, non-profits &amp; cats</title>
+    <link>/categories/publicdata/</link>
+    <description>Recent content in publicdata on Data viz, non-profits &amp; cats</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Anastasia Kuprina 2019</copyright>
+    <lastBuildDate>Wed, 24 Jul 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/publicdata/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>NYC trash bins availability</title>
+      <link>/post/nyc-trash-bins-availability/</link>
+      <pubDate>Wed, 24 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/nyc-trash-bins-availability/</guid>
+      <description>To finally try my hands on map visualisations, I used this publicly available dataset from NYC Open Data
+Data is very nice and tidy so it actually took less than an hour to create a simlpe (interactive when not PNG) plot using Leaflet: This is using the following libraries:
+ lettercase (has a neat substitution for make.names but uses underscores instead!) tidyverse leaflet mapview webshot htmlwidgets htmltools magrittr  </description>
+    </item>
+    
+  </channel>
+</rss>

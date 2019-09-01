@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Data viz, non-profits &amp; cats</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on Data viz, non-profits &amp; cats</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Anastasia Kuprina 2019</copyright>
+    <lastBuildDate>Sun, 04 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>TidyTuesday: Video Games</title>
+      <link>/post/video-games/</link>
+      <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/video-games/</guid>
+      <description>Using SteamSpy data, I was interested in seeing how many games are released on a daily basis. There was a clear trend in some days having higher number of new releases than others. It appears that most popular release day is Friday, followed by Thursday!
+Total releases by dates The trend highlighted that there are a lot less releases on the weekends compared to the weekdays:
+Original data: https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-07-30</description>
+    </item>
+    
+    <item>
+      <title>NYC trash bins availability</title>
+      <link>/post/nyc-trash-bins-availability/</link>
+      <pubDate>Wed, 24 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/nyc-trash-bins-availability/</guid>
+      <description>To finally try my hands on map visualisations, I used this publicly available dataset from NYC Open Data
+Data is very nice and tidy so it actually took less than an hour to create a simlpe (interactive when not PNG) plot using Leaflet: This is using the following libraries:
+ lettercase (has a neat substitution for make.names but uses underscores instead!) tidyverse leaflet mapview webshot htmlwidgets htmltools magrittr  </description>
+    </item>
+    
+    <item>
+      <title>codebar: a year in review</title>
+      <link>/post/codebar-a-year-in-review/</link>
+      <pubDate>Sun, 21 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/codebar-a-year-in-review/</guid>
+      <description>Originally writted for codelog on Medium.  codebar Helsinki is now over a year old; the idea having been born at a TEDx event here in Helsinki. There was a talk about volunteering which reminded James about how he used to coach at codebar Cambridge. We contacted codebar and that’s how it began!
+The past year Our first workshop was hosted by MOW back in June 2018, the co-working space in which James’s employer, Verifa, was located.</description>
+    </item>
+    
+    <item>
+      <title>TidyTuesday: Women in the workforce</title>
+      <link>/post/women-in-the-workforce/</link>
+      <pubDate>Fri, 05 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/women-in-the-workforce/</guid>
+      <description>TidyTuesday published data from the Census Bureau about women in the workforce. Equality and diversity are close to my heart and I couldn&amp;rsquo;t pass on this data. The data was showing - from all angles - that in categories that were given by Census Bureau, the pay gap is huge. At the same time, using same data, we can see what is the balance of females &amp;amp; males in the industry like.</description>
+    </item>
+    
+    <item>
+      <title>TidyTuesday: Remakes of Economist charts</title>
+      <link>/post/economist-charts/</link>
+      <pubDate>Tue, 07 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/economist-charts/</guid>
+      <description>tidytuesday-economist-remakes TidyTuesday had a task of redesigning the charts Economist mentioned at some point. Here is the original article: https://medium.economist.com/mistakes-weve-drawn-a-few-8cdd8a42d368
+Original chart I chose to work with: Original chart (&amp;ldquo;better&amp;rdquo;) made in R: I did a small makeover to show the &amp;ldquo;remorse&amp;rdquo; part in more detail:
+I like named y axis and I also prefer to have percentage sign there. As for &amp;ldquo;Wrong&amp;rdquo; being the highlight - the original chart is called Bremorse and (I guess) is meant to show the increase of people who believe their decision to vote &amp;ldquo;Leave&amp;rdquo; was wrong.</description>
+    </item>
+    
+    <item>
+      <title>codebar Helsinki introduction</title>
+      <link>/post/codebar-helsinki-introduction/</link>
+      <pubDate>Fri, 27 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/codebar-helsinki-introduction/</guid>
+      <description>Originally writted for codelog on Medium. To go along with the opening of a new codebar chapter in Helsinki, here is a quick Q&amp;amp;A with the organisers (Anastasia Kuprina and James Elderfield) to let them introduce themselves.
+What motivated you to bring codebar to Helsinki? James: I used to coach with the codebar chapter in Cambridge, UK, and loved it. I ended up moving to Helsinki for work, and found myself missing the fun of codebar.</description>
+    </item>
+    
+  </channel>
+</rss>

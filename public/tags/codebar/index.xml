@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>codebar on Data viz, non-profits &amp; cats</title>
+    <link>/tags/codebar/</link>
+    <description>Recent content in codebar on Data viz, non-profits &amp; cats</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Anastasia Kuprina 2019</copyright>
+    <lastBuildDate>Sun, 21 Jul 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/codebar/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>codebar: a year in review</title>
+      <link>/post/codebar-a-year-in-review/</link>
+      <pubDate>Sun, 21 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/codebar-a-year-in-review/</guid>
+      <description>Originally writted for codelog on Medium.  codebar Helsinki is now over a year old; the idea having been born at a TEDx event here in Helsinki. There was a talk about volunteering which reminded James about how he used to coach at codebar Cambridge. We contacted codebar and that’s how it began!
+The past year Our first workshop was hosted by MOW back in June 2018, the co-working space in which James’s employer, Verifa, was located.</description>
+    </item>
+    
+    <item>
+      <title>codebar Helsinki introduction</title>
+      <link>/post/codebar-helsinki-introduction/</link>
+      <pubDate>Fri, 27 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/codebar-helsinki-introduction/</guid>
+      <description>Originally writted for codelog on Medium. To go along with the opening of a new codebar chapter in Helsinki, here is a quick Q&amp;amp;A with the organisers (Anastasia Kuprina and James Elderfield) to let them introduce themselves.
+What motivated you to bring codebar to Helsinki? James: I used to coach with the codebar chapter in Cambridge, UK, and loved it. I ended up moving to Helsinki for work, and found myself missing the fun of codebar.</description>
+    </item>
+    
+  </channel>
+</rss>
