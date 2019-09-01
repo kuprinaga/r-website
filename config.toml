@@ -13,7 +13,7 @@ paginate = 5
 [languages]
   [languages.en]
     title = "Data viz, non-profits & cats"
-    subtitle = "Data, non-profits, cats"
+    subtitle = ""
     keywords = "data, cats, non-profits, data visualisation"
     copyright = "Anastasia Kuprina 2019"
     menuMore = "Show more"
