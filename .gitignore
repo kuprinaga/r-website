@@ -4,4 +4,4 @@
 .Ruserdata
 blogdown
 .Thumbs.db instead
-website/public/ # if using Netlify
+website/public/
