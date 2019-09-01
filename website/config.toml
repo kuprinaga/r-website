@@ -15,7 +15,7 @@ paginate = 5
     title = "Data viz, non-profits & cats"
     subtitle = "Data, non-profits, cats"
     keywords = "data, cats, non-profits, data visualisation"
-    copyright = "Kuprinasha 2019"
+    copyright = "Anastasia Kuprina 2019"
     menuMore = "Show more"
     readMore = "Read more"
     readOtherPosts = "Read other posts"
@@ -26,10 +26,15 @@ paginate = 5
 
     [languages.en.menu]
       [[languages.en.menu.main]]
+        identifier = "post"
+        name = "Blog"
+        url = "/"
+      [[languages.en.menu.main]]
         identifier = "about"
-        name = "About"
+        name = "About me"
         url = "/about"
       [[languages.en.menu.main]]
         identifier = "showcase"
         name = "Showcase"
         url = "/showcase"
+

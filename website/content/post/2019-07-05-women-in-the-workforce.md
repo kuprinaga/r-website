@@ -1,12 +1,13 @@
 ---
 title: 'TidyTuesday: Women in the workforce'
 author: kuprina
-date: '2019-09-01'
+date: '2019-07-05'
 slug: women-in-the-workforce
 categories:
   - tidytuesday
 tags:
   - datavis
+  - tidytuesday
   - tidyverse
 cover: '/img/share_by_area.png'
 description: ''
@@ -35,7 +36,7 @@ First I wanted to know *how balanced are the areas of work*, in other words, how
 
 ## Wages by work area
 
-<img src="/img/wages_by_area.png" alt="wages by area" width="100%"/>
+<img src="/img/wages_by_area.png" alt="wages by area of work" width="100%"/>
 
 The wage gap is crazy. I did find a few occupations where women are paid more than men, but it's so rare that it's not visible when data is aggregated by area of work.
 
