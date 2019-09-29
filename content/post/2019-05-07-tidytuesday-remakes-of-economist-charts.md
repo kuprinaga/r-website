@@ -14,6 +14,7 @@ description: ''
 keywords:
   - 'datavis'
   - 'tidytuesday'
+  - 'economist dataset'
 showFullContent: no
 ---
 
