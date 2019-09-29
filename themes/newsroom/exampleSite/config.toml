@@ -1,10 +1,10 @@
-baseurl = "/"  # Include trailing slash
-title = "Data viz, non-profits & cats"
+baseurl = "https://example.com/"  # Include trailing slash
+title = "Newsroom"
 theme = "newsroom"
-author = "Anastasia Kuprina"
-copyright = "Anastasia Kuprina 2019"
+author = "Weru"
+copyright = "Copyright © 2019, Weru and the Hugo Authors; all rights reserved."
 canonifyurls = true
-paginate = 10
+paginate = 3
 # Enable syntax highlighting
 # comment or delete the following lines 11 ~ 14
 pygmentsCodefences = true
@@ -21,3 +21,4 @@ pygmentsOptions = "linenos=table"
   
   # ga_verify = "" # google verification code e.g 5jb-rxeBfITeJQKOuUss3ud6FPGTxXkCho-ZN5qlrZg
   # twitter = "" # twitter handle e.g @weru
+
