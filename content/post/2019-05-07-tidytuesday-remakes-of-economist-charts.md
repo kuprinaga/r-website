@@ -1,20 +1,17 @@
 ---
-title: 'TidyTuesday: Remakes of Economist charts'
 author: kuprina
-date: '2019-05-07'
-slug: economist-charts
 categories:
-  - tidytuesday
+- datavis
+- tidyverse
+- ggplot
+date: '2019-05-07'
+description: "Economist chart remakes using the original Economist data"
+image: remade.png
 tags:
-  - tidyverse
-  - datavis
-  - tidytuesday
-cover: '/img/remade.png'
-description: ''
-keywords:
-  - 'datavis'
-  - 'tidytuesday'
-showFullContent: no
+- datavis
+- tidytuesday
+- ggplot
+title: 'TidyTuesday: Remakes of Economist charts'
 ---
 
 # tidytuesday-economist-remakes

@@ -1,19 +1,13 @@
 ---
-title: codebar Helsinki introduction
+categories:
+- codebar
 author: Anastasia & James
 date: '2018-07-27'
-slug: codebar-helsinki-introduction
-categories:
-  - codebar
+image: james_anastasia.jpg
+title: codebar Helsinki introduction
 tags:
-  - codebar
-  - non-profit
-cover: ''
-description: ''
-keywords:
-  - 'non-profits'
-  - ''
-showFullContent: no
+- codebar
+- non-profit
 ---
 
 #### Originally writted for [codelog](https://medium.com/the-codelog/new-chapter-introduction-codebar-helsinki-7e706137ebc7) on Medium.

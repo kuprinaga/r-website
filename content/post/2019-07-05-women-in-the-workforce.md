@@ -1,20 +1,17 @@
 ---
-title: 'TidyTuesday: Women in the workforce'
-author: kuprina
-date: '2019-07-05'
-slug: women-in-the-workforce
 categories:
-  - tidytuesday
+- datavis
+- tidyverse
+- ggplot
+date: '2019-07-05'
+description: "Census data about equality & balance in the workforce in various industries"
+image: share_by_area.png
 tags:
-  - datavis
-  - tidytuesday
-  - tidyverse
-cover: '/img/share_by_area.png'
-description: ''
-keywords:
-  - 'datavis'
-  - 'tidytuesday'
-showFullContent: no
+- datavis
+- tidytuesday
+- tidyverse
+- ggplot
+title: 'TidyTuesday: Women in the workforce'
 ---
 
 TidyTuesday published data from the Census Bureau about women in the workforce. Equality and diversity are close to my heart and I couldn't pass on this data. The data was showing - from all angles - that in categories that were given by Census Bureau, the pay gap is huge. At the same time, using same data, we can see what is the balance of females & males in the industry like.  
@@ -44,10 +41,10 @@ Original data: https://github.com/rfordatascience/tidytuesday/tree/master/data/2
 
 Libraries used: 
 
-- tidyverse
-- scales
-- magrittr
-- gridExtra
-- ggrepel
-- glue
-- grid
+- - tidyverse
+- - scales
+- - magrittr
+- - gridExtra
+- - ggrepel
+- - glue
+- - grid
