@@ -19,7 +19,7 @@ To finally try my hands on map visualisations, I used this publicly available da
 
 Data is very nice and tidy so it actually took less than an hour to create a simlpe interactive plot using *Leaflet*:
 
-<iframe src="/img/map.html" width = 100% height = 600px></iframe> 
+<iframe src="/images/map.html" width = 100% height = 600px></iframe> 
 
 This is using the following libraries:
 <ul>

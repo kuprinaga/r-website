@@ -21,11 +21,11 @@ Original chart I chose to work with:
 ![Original chart from Economist article](https://cdn-images-1.medium.com/max/1043/1*9GzHVtm4y_LeVmFCjqV3Ww.png)
 
 Original chart ("better") made in R:
-![Original chart from Economist but made in R](/img/original_r.png)
+![Original chart from Economist but made in R](/images/original_r.png)
 
 I did a small makeover to show the "remorse" part in more detail:
 
-![Original chart from Economist but made in R](/img/remade.png)
+![Original chart from Economist but made in R](/images/remade.png)
 
 I like named y axis and I also prefer to have percentage sign there. As for "Wrong" being the highlight - the original chart is called Bremorse and (I guess) is meant to show the increase of people who believe their decision to vote "Leave" was wrong. In that case, I'd remove the highlight from "Right" and only focus readers' attention on "Wrong".
 

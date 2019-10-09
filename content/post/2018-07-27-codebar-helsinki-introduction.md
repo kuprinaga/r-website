@@ -14,8 +14,6 @@ tags:
 
 To go along with the opening of a new codebar chapter in Helsinki, here is a quick Q&A with the organisers ([Anastasia Kuprina](https://www.linkedin.com/in/anastasiakuprina/) and [James Elderfield](https://www.linkedin.com/in/elderfd/)) to let them introduce themselves.
 
-<img src = '/img/james_anastasia.jpg' width = '50%'/>
-
 ### What motivated you to bring codebar to Helsinki?
 
 **James**: I used to coach with the codebar chapter in Cambridge, UK, and loved it. I ended up moving to Helsinki for work, and found myself missing the fun of codebar. I decided to see whether there was a Finnish chapter. On finding there wasn’t, I thought I might as well fix that!

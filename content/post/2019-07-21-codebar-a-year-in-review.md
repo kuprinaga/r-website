@@ -15,7 +15,7 @@ title: 'codebar: a year in review'
 
 codebar Helsinki is now over a year old; the idea having been born at a TEDx event here in Helsinki. There was a talk about volunteering which reminded James about how he used to coach at codebar Cambridge. We contacted codebar and that’s how it began!
 
-<img src = '/img/codebar_workshop.png'/>
+<img src = '/images/codebar_workshop.png'/>
 
 ## The past year
 

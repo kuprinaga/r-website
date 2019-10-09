@@ -28,12 +28,12 @@ I did not want to go with pink/blue that are typically "assigned" to genders. In
 First I wanted to know *how balanced are the areas of work*, in other words, how number of women compared to total headcount.
 
 
-<img src="/img/share_by_area.png" alt="share of female workers by area" width="100%"/>
+<img src="/images/share_by_area.png" alt="share of female workers by area" width="100%"/>
 
 
 ## Wages by work area
 
-<img src="/img/wages_by_area.png" alt="wages by area of work" width="100%"/>
+<img src="/images/wages_by_area.png" alt="wages by area of work" width="100%"/>
 
 The wage gap is crazy. I did find a few occupations where women are paid more than men, but it's so rare that it's not visible when data is aggregated by area of work.
 
