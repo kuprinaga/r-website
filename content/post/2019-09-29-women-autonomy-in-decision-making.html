@@ -1,0 +1,40 @@
+---
+title: Women's autonomy in decision making
+author: ''
+date: '2019-09-29'
+slug: women-autonomy-in-decision-making
+categories:
+  - publicdata
+tags:
+  - datavis
+  - tidyverse
+  - tutorial
+cover: ''
+description: 'Blah'
+keywords:
+  - 'tutorial'
+  - 'public dataset'
+  - 'tidyverse'
+  - 'ggplot'
+showFullContent: no
+---
+
+
+
+<p>After travelling in the past few weekends, I finally found some time to look at some potentially interesting data provided by <a href = 'https://data.worldbank.org/indicator/SG.DMK.ALLD.FN.ZS'> The World Bank </a>.</p>
+<p><strong>World Bank estimated scores for women participating in three major decisions: own healthcare, major household purchases and visiting family</strong>. I wanted to see how the trend on these has changed over time/which countries have highest &amp; lowest score.</p>
+<p>I started the work by reading in the data using <code>readr</code>. After downloading and unzipping the files, I placed them inside “data” folder in my repo:</p>
+<pre class="r"><code>path &lt;- &#39;../women-making-decisions/data/&#39; </code></pre>
+<p>There are several files in the folder (3 files are downloaded automatically), and their names are tedious, so I wanted to do it in several steps:</p>
+<ul>
+<li>Step 1: find all files in the folder (the path folder we just saved into R)</li>
+<li>Step 2: select the one we want</li>
+</ul>
+<p>My original code does exactly that:</p>
+<pre class="r"><code>file_list &lt;- list.files(path=&quot;data/&quot;)
+
+df &lt;- readr::read_csv(paste0(&#39;data/&#39;, file_list[1]), skip = 3)
+
+df_additional_1 &lt;-readr::read_csv(paste0(&#39;data/&#39;, file_list[2]))
+df_additional_2 &lt;-readr::read_csv(paste0(&#39;data/&#39;, file_list[3]))</code></pre>
+<p>But, turns out, R markdown <em>really</em> doesn’t like it when we try to list files in another repo. There’s a reported reproducible bug that I found, so maybe one day :) . Therefore, this is the code for you if you want to follow along this tutorial:</p>
