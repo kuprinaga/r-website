@@ -1,26 +1,18 @@
 ---
-title: codebar Helsinki introduction
+categories:
+- codebar
 author: Anastasia & James
 date: '2018-07-27'
-slug: codebar-helsinki-introduction
-categories:
-  - codebar
+image: james_anastasia.jpg
+title: codebar Helsinki introduction
 tags:
-  - codebar
-  - non-profit
-cover: ''
-description: ''
-keywords:
-  - 'non-profits'
-  - ''
-showFullContent: no
+- codebar
+- non-profit
 ---
 
 #### Originally writted for [codelog](https://medium.com/the-codelog/new-chapter-introduction-codebar-helsinki-7e706137ebc7) on Medium.
 
 To go along with the opening of a new codebar chapter in Helsinki, here is a quick Q&A with the organisers ([Anastasia Kuprina](https://www.linkedin.com/in/anastasiakuprina/) and [James Elderfield](https://www.linkedin.com/in/elderfd/)) to let them introduce themselves.
-
-<img src = '/img/james_anastasia.jpg' width = '50%'/>
 
 ### What motivated you to bring codebar to Helsinki?
 
