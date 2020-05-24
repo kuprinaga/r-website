@@ -12,6 +12,7 @@ pygmentsCodefencesGuessSyntax = true
 pygmentsUseClasses=true
 pygmentsOptions = "linenos=table"
 
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 # If you want to use disqus, uncomment the line below
 # disqusShortname = "yourdiscussshortname"
 

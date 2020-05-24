@@ -1,0 +1,297 @@
+---
+title: Lights for my houseplants
+author: kuprina
+date: '2020-05-24'
+slug: lights-for-my-houseplants
+categories:
+  - datavis
+  - plants
+  - tidyverse
+tags:
+  - datavis
+  - plants
+---
+
+
+Thanks to quarantine, I got into plants and acquired... 47 of them in various ways (some purchased, some propagated, some seeded, some from hydroponic pods). Thanks to a few resources like Bloom & Grow radio, House plant journal, Summer Rayne Oakes Youtube channel and others, I got into the sciency bits of it as well. 
+
+> An amusing side note: I was wondering where are all the plant lovers who also know how to handle data. Then I realised they are plant scientists.
+
+I am worried about the amount of lights the babies are getting since we are currently having a renovation (facade) and the windows are covered with scaffolding & plastic. After acquiring a light meter (I'm not sure a PAR meter is really worth it for my 50ish plants), I decided to conduct an experiment and calculate the daily light integral. Basically, I wanted to calculate how much light my plants were getting throughout the whole day in their location and make myself feel better. 
+
+
+Another side note. For those who are not plant scientists, here are some resources I recommend on the topic of lights: 
+
+- https://greeneryunlimited.co/blogs/plant-care/how-to-measure-light-for-plants
+- https://www.houseplantjournal.com/home/2019/10/28/dli-part-1-the-prequel-to-dli-daily-light-integral
+- https://bloomandgrowradio.com/grow-lights/ and
+- https://bloomandgrowradio.com/growlightsleslie/
+- books by Leslie Halleck
+
+Back to on-topic. Step-by-step what I did was:
+
+- record brightness of light in the same spot in the same way hourly for 2 days
+- write it down at the spot
+- digitalise (see below)
+- plot
+- calculate the DLI as explained by [Darryl in House Plant Journal](https://www.houseplantjournal.com/home/2019/11/7/dli-part-2-measuring-dli-at-home)
+- calculate DLI as an integral (area under curve) using a hand-made formula
+
+## Step 1: Recording
+
+<img src="/images/measuring_light.png" alt="picture of my living room sill with light measurements" width="100%"/>
+
+This is what my measurement "strategy" looked like. The main idea was that there is an arrow which points to where I'd put the light meter measurement bit and make sure the place is same hour-to-hour. I measured light in 3 locations on the south-western side of my apartment and 2 locations on the north-eastern side. All measurements were done in foot candles (FC).
+
+I think in general, it turned out quite well. Here's what the data looked like:
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(magrittr)
+
+hours <- seq(9, 19, by = 1)
+
+#### OFFICE WINDOW ####
+officewindow_measurements_wed <- c(NA, 116, 191, 230, 185, 158, 277, 137, 170, 56, 125)
+
+officewindow_measurements_thu <- c(NA, 235, NA, 101, 102, NA, 100, NA, 96, 102, 84)
+
+office_window <- tibble(hours, 
+                        officewindow_measurements_wed, 
+                        officewindow_measurements_thu)
+
+#### OFFICE ABOVE MONITOR ####
+
+officemonitor_wed <- c(NA, 40, 35, 64, 52, 38, 56, 38, 48, 12, 39)
+
+officemonitor_thus <- c(NA, 50, NA, 28, 27, NA, NA, 32, 37, 37, 32)
+
+office_monitor <- tibble(hours, 
+                         officemonitor_wed, 
+                         officemonitor_thus)
+
+#### KITCHEN FERNS ####
+
+kitchenfern_wed <- c(NA, 7, 12, 10, 32, 23, 46, 72, 65, 8, 33)
+
+kitchenfern_thu <- c(NA, 14, NA, 37, 50, NA, NA, 75, 71, 63, 41)
+
+kitchen_ferns <- tibble(hours, 
+                        kitchenfern_wed, 
+                        kitchenfern_thu)
+
+#### KITCHEN NEW TABLE ####
+
+kitchennewtable_wed <- c(NA, 16, 27, 53, 47, 55, 125, 124, 77, 19, 29)
+
+kitchennewtable_thu <- c(NA, 28, NA, 72, 92, NA, NA, 113, 110, 82, 61)
+
+kitchen_new_table <- tibble(hours, 
+                            kitchennewtable_wed, 
+                            kitchennewtable_thu)
+
+
+#### PILEA TABLE ####
+
+pilea_wed <- c(NA, 22, 67, 157, 197, 158, 260, 252, 230, 40, 184)
+
+pilea_thu <- c(NA, 67, NA, 149, 181, NA, NA, 261, 201, 196, 170)
+
+pilea_table <- tibble(hours, pilea_wed, pilea_thu)
+
+
+#### LIVING ROOM WINDOW ####
+
+livingrsill_wed <- c(NA, 157, 83, 300, 360, 306, 560, 580, 402, 77, 571)
+
+livingrsill_thu <- c(NA, 142, NA, 338, 432, NA, NA, 602, 514, 398, 590)
+
+living_room <- tibble(hours, 
+                      livingrsill_wed, 
+                      livingrsill_thu)
+
+
+create_long_data <- function(df){
+  out <- df %>%
+    gather(placement, fc, -hours)
+  
+  return(out)
+}
+
+living_room %<>% create_long_data()
+pilea_table %<>% create_long_data()
+office_window %<>% create_long_data()
+office_monitor %<>% create_long_data()
+kitchen_ferns %<>% create_long_data()
+kitchen_new_table  %<>% create_long_data()
+
+
+one_long_data <- living_room %>%
+  union_all(pilea_table) %>%
+  union_all(office_window) %>%
+  union_all(office_monitor) %>%
+  union_all(kitchen_ferns) %>%
+  union_all(kitchen_new_table) %>%
+  mutate(measurement_day = stringr::str_sub(placement, - 3, - 1),
+         measurement_location = sub("_.*", "", placement))
+```
+
+```{r display_table_head}
+knitr::kable(head(one_long_data))
+```
+
+There are a few missing data bits: although I did try to record hourly, I had some meetings, sometimes forgot and all other excuses I can think of.
+
+```{r display_table_summary}
+knitr::kable(summary(one_long_data))
+```
+
+What does the data look like?
+
+```{r plot, echo=FALSE}
+dd <- one_long_data %>%
+  group_by(measurement_location) %>%
+  summarise(average_fc = mean(fc, na.rm = T))
+
+one_long_data %>%
+  na.omit() %>%
+  ggplot(aes(x = hours, 
+                 y = fc,
+                 group = measurement_location)) +
+  geom_point() +
+  geom_smooth() +
+  geom_hline(data = dd,
+             aes(yintercept = average_fc)) +
+  facet_grid(.~measurement_location) +
+  theme_bw() +
+  labs(x = "Time of day",
+       y = "Foot candles")
+```
+
+Pretty interesting. Northern side office window sill gets about as much light as does southern side (covered in scaffolding) a bit away from the window.
+
+There is an odd decrease in the living room sill curve - the line goes down and the spikes back up in the evening. The reason is that our window is covered by scaffolding, but as we're partially facing west, at some point in the evening the sunset hits a hole in scaffolding which increases the readings a lot.
+
+## Step 2: calculations
+
+Now that I have one row per recording (per measurement location, per hour), I want to make sure that for each one measurement location, I get an average foot candle (fc) per hour. After that, I can follow advice from Darryl or calculate it as a parallelogram & area under the curve.
+
+What I did first was this:
+
+```{r first_attempt}
+one_long_data %>%
+  group_by(measurement_location) %>%
+  summarise(avg_fc = mean(fc, na.rm = T)) %>%
+  mutate(ppdf = avg_fc * 0.2, # estimating par measurement from the sunshine
+         dli_per_day = ppdf*0.0864) %>% # multiplying by 24h worth of seconds and dividing by 1 million to get moles not micromoles
+  select(measurement_location, avg_fc, dli_per_day)
+
+```
+
+The pitfall is that *I recorded only 9 hours worth of data*, and this average foot candle reading assumes that the light plants get when sun is out is *same amount* of light as they get at *all* other times, including night. Darryl didn't make a mistake in his tutorial (his average includes 0s for nighttime hours and estimates to make fc increases & decreases smoother), it was my average that was not right.
+
+
+```{r plot_location_prep}
+one_long_data %>%
+  na.omit() %>%
+  filter(measurement_location == 'livingrsill') %>%
+  ggplot(aes(x = hours, 
+                 y = fc)) +
+  geom_point() +
+  geom_smooth() +
+  geom_hline(aes(yintercept = mean(fc)),
+             color = 'red') +
+  scale_x_continuous(limits = c(0, 23)) +
+  theme_bw() +
+  labs(x = "Time of day",
+       y = "Foot candles")
+
+```
+
+The average is quite close but then imagine that all the points that are not recorded & displayed *use the red average line*.
+
+Now, what we can do is to use the regular area under the curve formula and/or pre-made functions in R to get this data. If we take hourly intervals but then assume 24 hours, then 0s that we were missing in the above calculation will be added.
+
+For the example below let's look at just one location to make things easier.
+
+```{r function_based}
+library(DescTools)
+
+## return moles per second of ppfd
+pileas_table_measurements <- one_long_data %>%
+  na.omit() %>%
+  mutate(ppfd = fc * 0.2) %>%
+  filter(measurement_location == "pilea") %>% 
+  arrange(hours) %>%
+  group_by(hours) %>%
+  summarise(avg_ppfd = mean(ppfd, na.rm = T)) %>%
+  pull(avg_ppfd)* 1E-6
+
+## calculate the integral here
+3600 / 2 * (pileas_table_measurements[1] + pileas_table_measurements[length(pileas_table_measurements)] + 2 * sum(pileas_table_measurements[2:length(pileas_table_measurements)-1]))
+
+```
+
+You can see that this result is ~1.13 mol/day while the one I initially calculated (the biased one that only looked at hours *with* light) was around ~2.8 mol/day. That's a pretty big difference but on the grand scheme of things, it's just not enough light.
+
+A bit more R to calculate each of the locations in a function:
+
+```{r proper}
+
+proper_integral_calc <- function(df){
+  out <- tibble(place = "0", dli = 0)
+  
+  for(m in unique(df$measurement_location)){
+    list_of_ppfd <- df %>%
+      na.omit() %>%
+      mutate(ppfd = fc * 0.2) %>%
+      filter(measurement_location == m) %>%
+      group_by(hours) %>%
+      summarise(avg_ppfd = mean(ppfd, na.rm = T)) %>%
+      arrange(hours) %>%
+      pull(avg_ppfd) * 1E-6
+    
+    result <- 3600 / 2 * (list_of_ppfd[1] + list_of_ppfd[length(list_of_ppfd)] + 2 * sum(list_of_ppfd[2:length(list_of_ppfd)-1]))
+    
+    out <- add_row(out, 
+                   place = paste(m),
+                   dli = result)
+
+  }
+  return(out)
+}
+
+proper_integral_calc(one_long_data)
+```
+
+Comparison of the two methods of calculation:
+
+```{r behind, include = F}
+
+dg <- proper_integral_calc(one_long_data) %>%
+  rename(integral_based_on24h = dli)
+
+dh <- one_long_data %>%
+  group_by(measurement_location) %>%
+  summarise(avg_fc = mean(fc, na.rm = T)) %>%
+  mutate(ppdf = avg_fc * 0.2,
+         dli_per_day = ppdf*0.0864) %>%
+  select(measurement_location, dli_per_day) %>%
+  rename(integral_based_on_avg = dli_per_day)
+```
+
+```{r front}
+dh %>%
+  inner_join(dg, by = c("measurement_location" = "place"))
+```
+
+## Step 3: What do these results mean?
+
+This suggests a few things to me:
+
+- I should record more data points. The second calculation (that is not based on average) is more accurate but currently assumes *all* hours outside the recorded time to be absolute 0 light which isn't really true
+- It looks like the first calculation (the average assumption without 24h 0s in the data) is too optimistic & the second calculation (with assumption that all other hours are 0s) is too pessimistic
+
+
+
+

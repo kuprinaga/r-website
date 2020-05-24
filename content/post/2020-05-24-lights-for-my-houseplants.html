@@ -1,0 +1,287 @@
+---
+title: Lights for my houseplants
+author: kuprina
+date: '2020-05-24'
+slug: lights-for-my-houseplants
+categories:
+  - datavis
+  - plants
+  - tidyverse
+tags:
+  - datavis
+  - plants
+---
+
+
+
+<p>Thanks to quarantine, I got into plants and acquired… 47 of them in various ways (some purchased, some propagated, some seeded, some from hydroponic pods). Thanks to a few resources like Bloom &amp; Grow radio, House plant journal, Summer Rayne Oakes Youtube channel and others, I got into the sciency bits of it as well.</p>
+<blockquote>
+<p>An amusing side note: I was wondering where are all the plant lovers who also know how to handle data. Then I realised they are plant scientists.</p>
+</blockquote>
+<p>I am worried about the amount of lights the babies are getting since we are currently having a renovation (facade) and the windows are covered with scaffolding &amp; plastic. After acquiring a light meter (I’m not sure a PAR meter is really worth it for my 50ish plants), I decided to conduct an experiment and calculate the daily light integral. Basically, I wanted to calculate how much light my plants were getting throughout the whole day in their location and make myself feel better.</p>
+<p>Another side note. For those who are not plant scientists, here are some resources I recommend on the topic of lights:</p>
+<ul>
+<li><a href="https://greeneryunlimited.co/blogs/plant-care/how-to-measure-light-for-plants" class="uri">https://greeneryunlimited.co/blogs/plant-care/how-to-measure-light-for-plants</a></li>
+<li><a href="https://www.houseplantjournal.com/home/2019/10/28/dli-part-1-the-prequel-to-dli-daily-light-integral" class="uri">https://www.houseplantjournal.com/home/2019/10/28/dli-part-1-the-prequel-to-dli-daily-light-integral</a></li>
+<li><a href="https://bloomandgrowradio.com/grow-lights/" class="uri">https://bloomandgrowradio.com/grow-lights/</a> and</li>
+<li><a href="https://bloomandgrowradio.com/growlightsleslie/" class="uri">https://bloomandgrowradio.com/growlightsleslie/</a></li>
+<li>books by Leslie Halleck</li>
+</ul>
+<p>Back to on-topic. Step-by-step what I did was:</p>
+<ul>
+<li>record brightness of light in the same spot in the same way hourly for 2 days</li>
+<li>write it down at the spot</li>
+<li>digitalise (see below)</li>
+<li>plot</li>
+<li>calculate the DLI as explained by <a href="https://www.houseplantjournal.com/home/2019/11/7/dli-part-2-measuring-dli-at-home">Darryl in House Plant Journal</a></li>
+<li>calculate DLI as an integral (area under curve) using a hand-made formula</li>
+</ul>
+<div id="step-1-recording" class="section level2">
+<h2>Step 1: Recording</h2>
+<p><img src="/images/measuring_light.png" alt="picture of my living room sill with light measurements" width="100%"/></p>
+<p>This is what my measurement “strategy” looked like. The main idea was that there is an arrow which points to where I’d put the light meter measurement bit and make sure the place is same hour-to-hour. I measured light in 3 locations on the south-western side of my apartment and 2 locations on the north-eastern side. All measurements were done in foot candles (FC).</p>
+<p>I think in general, it turned out quite well. Here’s what the data looked like:</p>
+<pre class="r"><code>knitr::kable(head(one_long_data))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">hours</th>
+<th align="left">placement</th>
+<th align="right">fc</th>
+<th align="left">measurement_day</th>
+<th align="left">measurement_location</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">9</td>
+<td align="left">livingrsill_wed</td>
+<td align="right">NA</td>
+<td align="left">wed</td>
+<td align="left">livingrsill</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="left">livingrsill_wed</td>
+<td align="right">157</td>
+<td align="left">wed</td>
+<td align="left">livingrsill</td>
+</tr>
+<tr class="odd">
+<td align="right">11</td>
+<td align="left">livingrsill_wed</td>
+<td align="right">83</td>
+<td align="left">wed</td>
+<td align="left">livingrsill</td>
+</tr>
+<tr class="even">
+<td align="right">12</td>
+<td align="left">livingrsill_wed</td>
+<td align="right">300</td>
+<td align="left">wed</td>
+<td align="left">livingrsill</td>
+</tr>
+<tr class="odd">
+<td align="right">13</td>
+<td align="left">livingrsill_wed</td>
+<td align="right">360</td>
+<td align="left">wed</td>
+<td align="left">livingrsill</td>
+</tr>
+<tr class="even">
+<td align="right">14</td>
+<td align="left">livingrsill_wed</td>
+<td align="right">306</td>
+<td align="left">wed</td>
+<td align="left">livingrsill</td>
+</tr>
+</tbody>
+</table>
+<p>There are a few missing data bits: although I did try to record hourly, I had some meetings, sometimes forgot and all other excuses I can think of.</p>
+<pre class="r"><code>knitr::kable(summary(one_long_data))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">hours</th>
+<th align="center">placement</th>
+<th align="center">fc</th>
+<th align="left">measurement_day</th>
+<th align="left">measurement_location</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td align="center">Min. : 9</td>
+<td align="center">Length:132</td>
+<td align="center">Min. : 7.00</td>
+<td align="left">Length:132</td>
+<td align="left">Length:132</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="center">1st Qu.:11</td>
+<td align="center">Class :character</td>
+<td align="center">1st Qu.: 39.25</td>
+<td align="left">Class :character</td>
+<td align="left">Class :character</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="center">Median :14</td>
+<td align="center">Mode :character</td>
+<td align="center">Median : 79.50</td>
+<td align="left">Mode :character</td>
+<td align="left">Mode :character</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="center">Mean :14</td>
+<td align="center">NA</td>
+<td align="center">Mean :138.46</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="center">3rd Qu.:17</td>
+<td align="center">NA</td>
+<td align="center">3rd Qu.:183.25</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td></td>
+<td align="center">Max. :19</td>
+<td align="center">NA</td>
+<td align="center">Max. :602.00</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td align="center">NA</td>
+<td align="center">NA</td>
+<td align="center">NA’s :30</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
+<p>What does the data look like?</p>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="/post/2020-05-24-lights-for-my-houseplants_files/figure-html/plot-1.png" width="672" /></p>
+<p>Pretty interesting. Northern side office window sill gets about as much light as does southern side (covered in scaffolding) a bit away from the window.</p>
+<p>There is an odd decrease in the living room sill curve - the line goes down and the spikes back up in the evening. The reason is that our window is covered by scaffolding, but as we’re partially facing west, at some point in the evening the sunset hits a hole in scaffolding which increases the readings a lot.</p>
+</div>
+<div id="step-2-calculations" class="section level2">
+<h2>Step 2: calculations</h2>
+<p>Now that I have one row per recording (per measurement location, per hour), I want to make sure that for each one measurement location, I get an average foot candle (fc) per hour. After that, I can follow advice from Darryl or calculate it as a parallelogram &amp; area under the curve.</p>
+<p>What I did first was this:</p>
+<pre class="r"><code>one_long_data %&gt;%
+  group_by(measurement_location) %&gt;%
+  summarise(avg_fc = mean(fc, na.rm = T)) %&gt;%
+  mutate(ppdf = avg_fc * 0.2, # estimating par measurement from the sunshine
+         dli_per_day = ppdf*0.0864) %&gt;% # multiplying by 24h worth of seconds and dividing by 1 million to get moles not micromoles
+  select(measurement_location, avg_fc, dli_per_day)</code></pre>
+<pre><code>## # A tibble: 6 x 3
+##   measurement_location avg_fc dli_per_day
+##   &lt;chr&gt;                 &lt;dbl&gt;       &lt;dbl&gt;
+## 1 kitchenfern            38.8       0.670
+## 2 kitchennewtable        66.5       1.15 
+## 3 livingrsill           377.        6.52 
+## 4 officemonitor          39.1       0.676
+## 5 officewindow          145         2.51 
+## 6 pilea                 164.        2.84</code></pre>
+<p>The pitfall is that <em>I recorded only 9 hours worth of data</em>, and this average foot candle reading assumes that the light plants get when sun is out is <em>same amount</em> of light as they get at <em>all</em> other times, including night. Darryl didn’t make a mistake in his tutorial (his average includes 0s for nighttime hours and estimates to make fc increases &amp; decreases smoother), it was my average that was not right.</p>
+<pre class="r"><code>one_long_data %&gt;%
+  na.omit() %&gt;%
+  filter(measurement_location == &#39;livingrsill&#39;) %&gt;%
+  ggplot(aes(x = hours, 
+                 y = fc)) +
+  geom_point() +
+  geom_smooth() +
+  geom_hline(aes(yintercept = mean(fc)),
+             color = &#39;red&#39;) +
+  scale_x_continuous(limits = c(0, 23)) +
+  theme_bw() +
+  labs(x = &quot;Time of day&quot;,
+       y = &quot;Foot candles&quot;)</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<p><img src="/post/2020-05-24-lights-for-my-houseplants_files/figure-html/plot_location_prep-1.png" width="672" /></p>
+<p>The average is quite close but then imagine that all the points that are not recorded &amp; displayed <em>use the red average line</em>.</p>
+<p>Now, what we can do is to use the regular area under the curve formula and/or pre-made functions in R to get this data. If we take hourly intervals but then assume 24 hours, then 0s that we were missing in the above calculation will be added.</p>
+<p>For the example below let’s look at just one location to make things easier.</p>
+<pre class="r"><code>library(DescTools)
+
+## return moles per second of ppfd
+pileas_table_measurements &lt;- one_long_data %&gt;%
+  na.omit() %&gt;%
+  mutate(ppfd = fc * 0.2) %&gt;%
+  filter(measurement_location == &quot;pilea&quot;) %&gt;% 
+  arrange(hours) %&gt;%
+  group_by(hours) %&gt;%
+  summarise(avg_ppfd = mean(ppfd, na.rm = T)) %&gt;%
+  pull(avg_ppfd)* 1E-6
+
+## calculate the integral here
+3600 / 2 * (pileas_table_measurements[1] + pileas_table_measurements[length(pileas_table_measurements)] + 2 * sum(pileas_table_measurements[2:length(pileas_table_measurements)-1]))</code></pre>
+<pre><code>## [1] 1.13202</code></pre>
+<p>You can see that this result is ~1.13 mol/day while the one I initially calculated (the biased one that only looked at hours <em>with</em> light) was around ~2.8 mol/day. That’s a pretty big difference but on the grand scheme of things, it’s just not enough light.</p>
+<p>A bit more R to calculate each of the locations in a function:</p>
+<pre class="r"><code>proper_integral_calc &lt;- function(df){
+  out &lt;- tibble(place = &quot;0&quot;, dli = 0)
+  
+  for(m in unique(df$measurement_location)){
+    list_of_ppfd &lt;- df %&gt;%
+      na.omit() %&gt;%
+      mutate(ppfd = fc * 0.2) %&gt;%
+      filter(measurement_location == m) %&gt;%
+      group_by(hours) %&gt;%
+      summarise(avg_ppfd = mean(ppfd, na.rm = T)) %&gt;%
+      arrange(hours) %&gt;%
+      pull(avg_ppfd) * 1E-6
+    
+    result &lt;- 3600 / 2 * (list_of_ppfd[1] + list_of_ppfd[length(list_of_ppfd)] + 2 * sum(list_of_ppfd[2:length(list_of_ppfd)-1]))
+    
+    out &lt;- add_row(out, 
+                   place = paste(m),
+                   dli = result)
+
+  }
+  return(out)
+}
+
+proper_integral_calc(one_long_data)</code></pre>
+<pre><code>## # A tibble: 7 x 2
+##   place             dli
+##   &lt;chr&gt;           &lt;dbl&gt;
+## 1 0               0    
+## 2 livingrsill     2.49 
+## 3 pilea           1.13 
+## 4 officewindow    1.09 
+## 5 officemonitor   0.289
+## 6 kitchenfern     0.257
+## 7 kitchennewtable 0.473</code></pre>
+<p>Comparison of the two methods of calculation:</p>
+<pre class="r"><code>dh %&gt;%
+  inner_join(dg, by = c(&quot;measurement_location&quot; = &quot;place&quot;))</code></pre>
+<pre><code>## # A tibble: 6 x 3
+##   measurement_location integral_based_on_avg integral_based_on24h
+##   &lt;chr&gt;                                &lt;dbl&gt;                &lt;dbl&gt;
+## 1 kitchenfern                          0.670                0.257
+## 2 kitchennewtable                      1.15                 0.473
+## 3 livingrsill                          6.52                 2.49 
+## 4 officemonitor                        0.676                0.289
+## 5 officewindow                         2.51                 1.09 
+## 6 pilea                                2.84                 1.13</code></pre>
+</div>
+<div id="step-3-what-do-these-results-mean" class="section level2">
+<h2>Step 3: What do these results mean?</h2>
+<p>This suggests a few things to me:</p>
+<ul>
+<li>I should record more data points. The second calculation (that is not based on average) is more accurate but currently assumes <em>all</em> hours outside the recorded time to be absolute 0 light which isn’t really true</li>
+<li>It looks like the first calculation (the average assumption without 24h 0s in the data) is too optimistic &amp; the second calculation (with assumption that all other hours are 0s) is too pessimistic</li>
+</ul>
+</div>
