@@ -15,6 +15,8 @@ tags:
 
 Thanks to quarantine, I got into plants and acquired... 47 of them in various ways (some purchased, some propagated, some seeded, some from hydroponic pods). Thanks to a few resources like Bloom & Grow radio, House plant journal, Summer Rayne Oakes Youtube channel and others, I got into the sciency bits of it as well. 
 
+<img src="/images/livingroom_plants.jpeg" alt="picture of my living room sill with light measurements" width="100%"/>
+
 > An amusing side note: I was wondering where are all the plant lovers who also know how to handle data. Then I realised they are plant scientists.
 
 I am worried about the amount of lights the babies are getting since we are currently having a renovation (facade) and the windows are covered with scaffolding & plastic. After acquiring a light meter (I'm not sure a PAR meter is really worth it for my 50ish plants), I decided to conduct an experiment and calculate the daily light integral. Basically, I wanted to calculate how much light my plants were getting throughout the whole day in their location and make myself feel better. 
