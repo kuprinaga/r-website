@@ -1,8 +1,8 @@
 baseurl = "/"  # Include trailing slash
-title = "Data viz, non-profits & cats"
+title = "Data viz, plants & cats"
 theme = "newsroom"
 author = "Anastasia Kuprina"
-copyright = "Anastasia Kuprina 2019"
+copyright = "Anastasia Kuprina 2020"
 canonifyurls = true
 paginate = 10
 # Enable syntax highlighting

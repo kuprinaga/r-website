@@ -10,7 +10,7 @@ title: About
 <li>- Data Analyst in Mobile Game Dev, currently working at <a href = 'https://seriously.com'>Seriously</a>
 <li>- Co-founder and organiser of <a href = 'https://codebar.io/helsinki'>codebar Helsinki</a>
 <li>- Data Visualisation enthusiast, fan of <a href = '/tags/tidytuesday/'>#TidyTuesday</a> </li>
-<li>- Pro-bono Data Analyst for non-profits for socio-economic causes
+<li>- Mobile games fan
 <li>- Cat lady
 <ul/></p>
 
